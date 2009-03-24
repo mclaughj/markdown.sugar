@@ -20,6 +20,18 @@
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/git/markdown.sugar/PlaceholderThemes/Markdown.css</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/git/markdown.sugar/Itemizers/Itemizers.xml</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
 				<string>file://localhost/Users/david/git/markdown.sugar/Syntaxes/Markdown.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
