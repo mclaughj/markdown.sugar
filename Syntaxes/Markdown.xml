@@ -27,7 +27,7 @@
 			</subzones>
 		</zone>
 		
-		<!-- !CODE BLOCK <pre> -->
+		<!-- CODE BLOCK <pre> -->
 		<zone name="text.pre">
 			<starts-with>
 				<expression>^(\t{1}|\s{4})[^\[]</expression>
@@ -37,16 +37,16 @@
 			</ends-with>
 		</zone>
 		
-		<!-- !CODE <code> -->
+		<!-- CODE <code> -->
 		<zone>
 			<expression>(`[^`]*`)</expression>
 			<capture number="1" name="text.code.markdown"/>
 		</zone>
 		
-		<!-- !HORIZONTAL RULER -->
+		<!-- HORIZONTAL RULER -->
 		<zone name="ruler.markdown">
 			<starts-with>
-				<expression>^([-\*_]{3,})</expression>
+				<expression>^[-\*_]{3,}</expression>
 			</starts-with>
 			<ends-with>
 				<expression>\n</expression>
