@@ -1,0 +1,93 @@
+/*
+	@placeholder text.markdown
+*/
+
+ruler.markdown {
+	background-color: #474747;
+	color: #ffffff;
+	spell-check: disabled;
+}
+
+url.markdown {
+	color: #2F6F9F;
+	spell-check: disabled;
+}
+
+reference {
+	color: #4e279a;
+	background-color: #f3f2ff;
+	spell-check: disabled;
+}
+
+keyword {
+	color: #74748c;
+	background-color: rgba(116,116,140,0.05);
+	spell-check: disabled;
+}
+
+keyword.image {
+	color: #881b1b;
+	background-color: #fff;
+}
+
+keyword.less_important.markdown {
+	color: #444;
+	background-color: #fff;
+}
+
+entity {
+	color: #2F6F9F;
+	background-color: rgb(244, 250, 255);
+}
+
+text.entity {
+	color: #74748c;
+	background-color: #fff;
+}
+
+text.bold {
+	color: #555;
+	font-weight: bold;
+}
+
+text.italic {
+	color: #555;
+	font-weight: normal;
+	font-style: italic;
+}
+
+text.justbold {
+	font-weight: bold;
+}
+
+text.list.markdown {
+	color: #47992c;
+	background-color: rgba(71,153,44,0.05);
+}
+
+text.blockquote {
+	background-color: #f6f6f6;
+}
+
+text.pre,
+text.code.markdown {
+	color: #888;
+	background-color: #f6f6f6;
+}
+
+header.hashed.markdown {
+	color: #c23f1d;
+	font-weight: bold;
+	background-color: rgba(194,56,36,0.04);
+}
+
+punctuation.header.delimeter.hashed {
+	font-weight: normal;
+	color: #888;
+	background-color: #fff;
+}
+
+comment, comment>punctuation, tag.doctype, tag.doctype > *, tag.doctype > string.quoted {
+	color: #AAAAAA;
+	font-weight: normal;
+}
