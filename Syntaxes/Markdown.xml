@@ -7,7 +7,7 @@
 		
 		<include collection="markdown.headers"/>
 		<include collection="markdown.stylistic"/>
-		<include collection="text.lists"/>
+		<include collection="markdown.lists"/>
 		<include collection="markdown.relationships"/>
 		
 		<!-- !BLOCKQUOTE -->
@@ -91,7 +91,7 @@
 			</zone>
 		</collection>
 		
-		<collection name="text.lists">
+		<collection name="markdown.lists">
 			<!-- UNORDERED LIST -->
 			<zone>
 				<expression>^(\t|\s)*([-+\*]{1}[^-+\*])(.*)$\n?</expression>
@@ -196,15 +196,23 @@
 			
 			<!-- REFERENCE DEFINITION -->
 			<zone name="metadata.internal.reference">
-				<expression>^ {0,3}(\[)(.+?)(\])(:)\s+(.+?)(\s+(['"])(.+?)(\7))?</expression>
-				<capture number="1" name="delimiter.balanced.opening.square-brace"/>
-				<capture number="2" name="keyword.internal.reference"/>
-				<capture number="3" name="delimiter.balanced.closing.square-brace"/>
-				<capture number="4" name="delimiter.separator"/>
-				<capture number="5" name="literal.string.url"/>
-				<capture number="7" name="delimiter.balanced.opening.quote"/>
-				<capture number="8" name="literal.string.title"/>
-				<capture number="9" name="delimiter.balanced.closing.quote"/>
+				<starts-with>
+					<expression>^ {0,3}(\[)(.+)(\])(:)\s+(&lt;?)([^\s>]+)(>?)</expression>
+					<capture number="1" name="delimiter.balanced.opening.square-brace"/>
+					<capture number="2" name="keyword.internal.reference"/>
+					<capture number="3" name="delimiter.balanced.closing.square-brace"/>
+					<capture number="4" name="delimiter.separator"/>
+					<capture number="5" name="delimiter.balanced.opening.bracket"/>
+					<capture number="6" name="literal.string.url"/>
+					<capture number="7" name="delimiter.balanced.closing.bracket"/>
+				</starts-with>
+				<ends-with>
+					<!--This might need revising; currently, with no title the item will span the line because I have to get to the next line to check it for the patterns that will clear the item-->
+					<expression>((\s+(['"\(])(.+?)(\9|\)))$)|((?=^\s*$)|(?=^\s*\[.+\]:))</expression>
+					<capture number="3" name="delimiter.balanced.opening"/>
+					<capture number="4" name="literal.string.title"/>
+					<capture number="5" name="delimiter.balanced.closing"/>
+				</ends-with>
 			</zone>
 			
 		</collection>

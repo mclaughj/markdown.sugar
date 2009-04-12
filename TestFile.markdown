@@ -206,7 +206,7 @@ That is:
 [foo]: http://example.com/  (Optional Title Here)
 
 
-[id]: <http://example.com/>  "Optional Title Here"
+[id]: <http://example.com/>
 
 [id]: http://example.com/longish/path/to/resource/here
     "Optional Title Here"
