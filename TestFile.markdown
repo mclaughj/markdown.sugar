@@ -11,6 +11,9 @@ Asterisks around a word actually look like \*emphasis\*.
 __Markdown's__ syntax is intended for one _purpose_: to be used as a
 format for *writing* for the **web**.
 
+**Sometimes I want a lot of text to be bold.
+Like, seriously, a _LOT_ of text**
+
 The only restrictions are that block-level HTML elements -- e.g. `<div>`,
 `<table>`, `<pre>`, `<p>`, etc. -- must be separated from surrounding
 content by blank lines, and the start and end tags of the block should
