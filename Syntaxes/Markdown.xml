@@ -1,57 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <syntax name="text.markdown">
 	<zones>
+		<include collection="markdown.code"/>
+		
 		<zone name="literal.escape.markdown">
 			<expression>\\(\\|`|\*|_|\{|}|\[|]|\(|\)|#|\+|-|\.|!)</expression>
+		</zone>
+		
+		<!-- HORIZONTAL RULE -->
+		<zone name="structural.separator">
+			<starts-with>
+				<expression>^\s*([\*_-])\s*\1\s*\1</expression>
+			</starts-with>
+			<ends-with>
+				<expression>$\n</expression>
+			</ends-with>
+		</zone>
+		
+		<!-- !BLOCKQUOTE -->
+		<zone name="structural.container.blockquote">
+			<starts-with>
+				<expression>(?=^\s*>)</expression>
+			</starts-with>
+			<ends-with>
+				<expression>(?=^$)</expression>
+			</ends-with>
+			<subzones>
+				<zone>
+					<expression>^\s*(>)</expression>
+					<capture number="1" name="metadata.formatting"/>
+				</zone>
+				<include syntax="self"/>
+			</subzones>
 		</zone>
 		
 		<include collection="markdown.headers"/>
 		<include collection="markdown.stylistic"/>
 		<include collection="markdown.lists"/>
-		<include collection="markdown.relationships"/>
-		
-		<!-- !BLOCKQUOTE -->
-		<zone name="text.blockquote">
-			<starts-with>
-				<expression>^([>]{1})</expression>
-			</starts-with>
-			<ends-with>
-				<expression>^$</expression>
-			</ends-with>
-			<subzones>
-				<include collection="text.styles"/>
-				<include collection="functions.links"/>
-			</subzones>
-		</zone>
-		
-		<!-- CODE BLOCK <pre> -->
-		<zone name="text.pre">
-			<starts-with>
-				<expression>^(\t{1}|\s{4})[^\[]</expression>
-			</starts-with>
-			<ends-with>
-				<expression>^$</expression>
-			</ends-with>
-		</zone>
-		
-		<!-- CODE <code> -->
-		<zone>
-			<expression>(`[^`]*`)</expression>
-			<capture number="1" name="text.code.markdown"/>
-		</zone>
-		
-		<!-- HORIZONTAL RULER -->
-		<zone name="ruler.markdown">
-			<starts-with>
-				<expression>^[-\*_]{3,}</expression>
-			</starts-with>
-			<ends-with>
-				<expression>\n</expression>
-			</ends-with>
-		</zone>
-		
+		<include collection="markdown.links"/>
 	</zones>
+	
 	<library>
+		<collection name="markdown.code">
+			<!-- CODE BLOCK <pre> -->
+			<zone name="text.pre">
+				<starts-with>
+					<expression>^(\t{1}|\s{4})[^\[]</expression>
+				</starts-with>
+				<ends-with>
+					<expression>^$</expression>
+				</ends-with>
+			</zone>
+			
+			<!-- CODE <code> -->
+			<zone>
+				<expression>(`[^`]*`)</expression>
+				<capture number="1" name="text.code.markdown"/>
+			</zone>
+		</collection>
+		
 		<collection name="markdown.headers">
 			<!-- ATX HEADERs -->
 			<zone name="structural.header.atx.title">
@@ -103,12 +110,15 @@
 				<subzones>
 					<zone name="structural.list.element">
 						<starts-with>
-							<expression>^\s*([-+\*])\s+.+</expression>
+							<expression>^\s*([-+\*])\s+</expression>
 							<capture number="1" name="metadata.formatting"/>
 						</starts-with>
 						<ends-with>
 							<expression>(?=^\s*[-+\*]\s)|(?=^$)</expression>
 						</ends-with>
+						<subzones>
+							<include syntax="self"/>
+						</subzones>
 					</zone>
 				</subzones>
 			</zone>
@@ -124,18 +134,21 @@
 				<subzones>
 					<zone name="structural.list.element">
 						<starts-with>
-							<expression>^\s*([0-9]+\.)\s+.+</expression>
+							<expression>^\s*([0-9]+\.)\s+</expression>
 							<capture number="1" name="metadata.formatting"/>
 						</starts-with>
 						<ends-with>
 							<expression>(?=^\s*[0-9]+\.\s)|(?=^$)</expression>
 						</ends-with>
+						<subzones>
+							<include syntax="self"/>
+						</subzones>
 					</zone>
 				</subzones>
 			</zone>
 		</collection>
 		
-		<collection name="markdown.relationships">
+		<collection name="markdown.links">
 			
 			<!-- AUTO LINK / E-MAIL -->
 			<zone name="relationship.link.external">
@@ -242,7 +255,6 @@
 					<capture number="5" name="delimiter.balanced.end"/>
 				</ends-with>
 			</zone>
-			
 		</collection>
 	</library>
 </syntax>
