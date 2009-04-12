@@ -56,20 +56,20 @@
 			<!-- ATX HEADERs -->
 			<zone name="structural.header.atx.title">
 				<expression>^(#) .+?( (#+))?$</expression>
-				<capture number="1" name="delimiter.balanced.opening.hash"/>
-				<capture number="3" name="delimiter.balanced.closing.hash"/>
+				<capture number="1" name="delimiter.balanced.begin.hash"/>
+				<capture number="3" name="delimiter.balanced.end.hash"/>
 			</zone>
 			
 			<zone name="structural.header.atx.section">
 				<expression>^(#{2}) .+?( (#+))?$</expression>
-				<capture number="1" name="delimiter.balanced.opening.hash"/>
-				<capture number="3" name="delimiter.balanced.closing.hash"/>
+				<capture number="1" name="delimiter.balanced.begin.hash"/>
+				<capture number="3" name="delimiter.balanced.end.hash"/>
 			</zone>
 			
 			<zone name="structural.header.atx.tertiary">
 				<expression>^(#{3,6}) .+?( (#+))?$</expression>
-				<capture number="1" name="delimiter.balanced.opening.hash"/>
-				<capture number="3" name="delimiter.balanced.closing.hash"/>
+				<capture number="1" name="delimiter.balanced.begin.hash"/>
+				<capture number="3" name="delimiter.balanced.end.hash"/>
 			</zone>
 			
 			<!-- SETEXT HEADERS need some serious love; how to capture without conflicting with HR elements? -->
@@ -79,31 +79,59 @@
 			<!-- !BOLD -->
 			<zone name="stylistic.typography.weight">
 				<expression>([\*_]{2}).+?(\1)</expression>
-				<capture number="1" name="delimiter.balanced.opening"/>
-				<capture number="2" name="delimiter.balanced.closing"/>
+				<capture number="1" name="delimiter.balanced.begin"/>
+				<capture number="2" name="delimiter.balanced.end"/>
 			</zone>
 			
 			<!-- !ITALIC -->
 			<zone name="stylistic.typography.variant.slant">
 				<expression>([\*_]).+?(\1)</expression>
-				<capture number="1" name="delimiter.balanced.opening"/>
-				<capture number="2" name="delimiter.balanced.closing"/>
+				<capture number="1" name="delimiter.balanced.begin"/>
+				<capture number="2" name="delimiter.balanced.end"/>
 			</zone>
 		</collection>
 		
 		<collection name="markdown.lists">
 			<!-- UNORDERED LIST -->
-			<zone>
-				<expression>^(\t|\s)*([-+\*]{1}[^-+\*])(.*)$\n?</expression>
-				<capture number="2" name="keyword.less_important.markdown"/>
-				<capture number="3" name="text.list.markdown"/>
+			<zone name="structural.list.unordered">
+				<starts-with>
+					<expression>(?=^\s*[-+\*]\s+.)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^$)</expression>
+				</ends-with>
+				<subzones>
+					<zone name="structural.list.element">
+						<starts-with>
+							<expression>^\s*([-+\*])\s+.+</expression>
+							<capture number="1" name="metadata.formatting"/>
+						</starts-with>
+						<ends-with>
+							<expression>(?=^\s*[-+\*]\s)|(?=^$)</expression>
+						</ends-with>
+					</zone>
+				</subzones>
 			</zone>
 			
 			<!-- ORDERED LIST -->
-			<zone>
-				<expression>^([0-9]\.[ ]{0,1})(.*)$\n?</expression>
-				<capture number="1" name="keyword.less_important.markdown"/>
-				<capture number="2" name="text.list.markdown"/>
+			<zone name="structural.list.ordered">
+				<starts-with>
+					<expression>(?=^\s*[0-9]+\.\s+.)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^$)</expression>
+				</ends-with>
+				<subzones>
+					<zone name="structural.list.element">
+						<starts-with>
+							<expression>^\s*([0-9]+\.)\s+.+</expression>
+							<capture number="1" name="metadata.formatting"/>
+						</starts-with>
+						<ends-with>
+							<expression>(?=^\s*[0-9]+\.\s)|(?=^$)</expression>
+						</ends-with>
+					</zone>
+				</subzones>
 			</zone>
 		</collection>
 		
@@ -112,106 +140,106 @@
 			<!-- AUTO LINK / E-MAIL -->
 			<zone name="relationship.link.external">
 				<expression>(&lt;)(https?://.*?)(>)</expression>
-				<capture number="1" name="delimiter.balanced.opening.bracket"/>
+				<capture number="1" name="delimiter.balanced.begin.bracket"/>
 				<capture number="2" name="literal.string.url"/>
-				<capture number="3" name="delimiter.balanced.closing.bracket"/>
+				<capture number="3" name="delimiter.balanced.end.bracket"/>
 			</zone>
 			<zone name="relationship.link.internal">
 				<expression>(&lt;)(/|[a-zA-Z0-9_-].*?)(>)</expression>
-				<capture number="1" name="delimiter.balanced.opening.bracket"/>
+				<capture number="1" name="delimiter.balanced.begin.bracket"/>
 				<capture number="2" name="literal.string.url"/>
-				<capture number="3" name="delimiter.balanced.closing.bracket"/>
+				<capture number="3" name="delimiter.balanced.end.bracket"/>
 			</zone>
 			<zone name="relationship.link.contact">
 				<expression>(&lt;)([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})(>)</expression>
-				<capture number="1" name="delimiter.balanced.opening.bracket"/>
+				<capture number="1" name="delimiter.balanced.begin.bracket"/>
 				<capture number="2" name="literal.string.email"/>
-				<capture number="3" name="delimiter.balanced.closing.bracket"/>
+				<capture number="3" name="delimiter.balanced.end.bracket"/>
 			</zone>
 			<zone name="relationship.link.unknown">
 				<expression>(&lt;)(.*?)(>)</expression>
-				<capture number="1" name="delimiter.balanced.opening.bracket"/>
+				<capture number="1" name="delimiter.balanced.begin.bracket"/>
 				<capture number="2" name="literal.string.url"/>
-				<capture number="3" name="delimiter.balanced.closing.bracket"/>
+				<capture number="3" name="delimiter.balanced.end.bracket"/>
 			</zone>
 			
 			<!-- NORMAL LINK -->
 			<zone name="relationship.link.inline">
 				<expression>(\[).+?(\]) ?(\()([^\s]+?)(\s+(['"])(.+?)(\6))?(\))</expression>
-				<capture number="1" name="delimiter.balanced.opening.square-brace"/>
-				<capture number="2" name="delimiter.balanced.closing.square-brace"/>
-				<capture number="3" name="delimiter.balanced.opening.parenthesis"/>
+				<capture number="1" name="delimiter.balanced.begin.square-brace"/>
+				<capture number="2" name="delimiter.balanced.end.square-brace"/>
+				<capture number="3" name="delimiter.balanced.begin.parenthesis"/>
 				<capture number="4" name="literal.string.url"/>
-				<capture number="6" name="delimiter.balanced.opening.quote"/>
+				<capture number="6" name="delimiter.balanced.begin.quote"/>
 				<capture number="7" name="literal.string.title"/>
-				<capture number="8" name="delimiter.balanced.closing.quote"/>
-				<capture number="9" name="delimiter.balanced.closing.parenthesis"/>
+				<capture number="8" name="delimiter.balanced.end.quote"/>
+				<capture number="9" name="delimiter.balanced.end.parenthesis"/>
 			</zone>
 			
 			<!-- REFERENCE LINKS -->
 			<zone name="relationship.link.reference">
 				<expression>(\[).+?(\]) ?(\[)(.+?)(\])</expression>
-				<capture number="1" name="delimiter.balanced.opening.square-brace"/>
-				<capture number="2" name="delimiter.balanced.closing.square-brace"/>
-				<capture number="3" name="delimiter.balanced.opening.square-brace"/>
+				<capture number="1" name="delimiter.balanced.begin.square-brace"/>
+				<capture number="2" name="delimiter.balanced.end.square-brace"/>
+				<capture number="3" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="4" name="keyword.internal.reference"/>
-				<capture number="5" name="delimiter.balanced.closing.square-brace"/>
+				<capture number="5" name="delimiter.balanced.end.square-brace"/>
 			</zone>
 			
 			<zone name="relationship.link.reference">
 				<expression>(\[)(.+?)(\]) ?(\[)(\])</expression>
-				<capture number="1" name="delimiter.balanced.opening.square-brace"/>
+				<capture number="1" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="2" name="keyword.internal.reference"/>
-				<capture number="3" name="delimiter.balanced.closing.square-brace"/>
-				<capture number="4" name="delimiter.balanced.opening.square-brace"/>
-				<capture number="5" name="delimiter.balanced.closing.square-brace"/>
+				<capture number="3" name="delimiter.balanced.end.square-brace"/>
+				<capture number="4" name="delimiter.balanced.begin.square-brace"/>
+				<capture number="5" name="delimiter.balanced.end.square-brace"/>
 			</zone>
 					
 			<!-- NORMAL IMAGE -->
 			<zone name="relationship.image.inline">
 				<expression>(!)(\[)(.+?)(\])(\()(.+?)(\s+(['"])(.+?)(\8))?(\))</expression>
 				<capture number="1" name="metadata.operator"/>
-				<capture number="2" name="delimiter.balanced.opening.square-brace"/>
+				<capture number="2" name="delimiter.balanced.begin.square-brace"/>
 				
-				<capture number="4" name="delimiter.balanced.closing.square-brace"/>
-				<capture number="5" name="delimiter.balanced.opening.parenthesis"/>
+				<capture number="4" name="delimiter.balanced.end.square-brace"/>
+				<capture number="5" name="delimiter.balanced.begin.parenthesis"/>
 				<capture number="6" name="literal.string.url"/>
-				<capture number="8" name="delimiter.balanced.opening.quote"/>
+				<capture number="8" name="delimiter.balanced.begin.quote"/>
 				<capture number="9" name="literal.string.title"/>
-				<capture number="10" name="delimiter.balanced.closing.quote"/>
-				<capture number="11" name="delimiter.balanced.closing.parenthesis"/>
+				<capture number="10" name="delimiter.balanced.end.quote"/>
+				<capture number="11" name="delimiter.balanced.end.parenthesis"/>
 			</zone>
 			
 			<!-- REFERENCE IMAGE -->
 			<zone name="relationship.image.reference">
 				<expression>(!)(\[)(.+?)(\])(\[)(.+?)(\])</expression>
-				<capture number="1" name="metadata.operator"/>
-				<capture number="2" name="delimiter.balanced.opening.square-brace"/>
+				<capture number="1" name="metadata.formatting"/>
+				<capture number="2" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="3" name="literal.string.url"/>
-				<capture number="4" name="delimiter.balanced.closing.square-brace"/>
-				<capture number="5" name="delimiter.balanced.opening.square-brace"/>
+				<capture number="4" name="delimiter.balanced.end.square-brace"/>
+				<capture number="5" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="6" name="keyword.internal.reference"/>
-				<capture number="7" name="delimiter.balanced.closing.square-brace"/>
+				<capture number="7" name="delimiter.balanced.end.square-brace"/>
 			</zone>
 			
 			<!-- REFERENCE DEFINITION -->
 			<zone name="metadata.internal.reference">
 				<starts-with>
 					<expression>^ {0,3}(\[)(.+)(\])(:)\s+(&lt;?)([^\s>]+)(>?)</expression>
-					<capture number="1" name="delimiter.balanced.opening.square-brace"/>
+					<capture number="1" name="delimiter.balanced.begin.square-brace"/>
 					<capture number="2" name="keyword.internal.reference"/>
-					<capture number="3" name="delimiter.balanced.closing.square-brace"/>
+					<capture number="3" name="delimiter.balanced.end.square-brace"/>
 					<capture number="4" name="delimiter.separator"/>
-					<capture number="5" name="delimiter.balanced.opening.bracket"/>
+					<capture number="5" name="delimiter.balanced.begin.bracket"/>
 					<capture number="6" name="literal.string.url"/>
-					<capture number="7" name="delimiter.balanced.closing.bracket"/>
+					<capture number="7" name="delimiter.balanced.end.bracket"/>
 				</starts-with>
 				<ends-with>
 					<!--This might need revising; currently, with no title the item will span the line because I have to get to the next line to check it for the patterns that will clear the item-->
 					<expression>((\s+(['"\(])(.+?)(\9|\)))$)|((?=^\s*$)|(?=^\s*\[.+\]:))</expression>
-					<capture number="3" name="delimiter.balanced.opening"/>
+					<capture number="3" name="delimiter.balanced.begin"/>
 					<capture number="4" name="literal.string.title"/>
-					<capture number="5" name="delimiter.balanced.closing"/>
+					<capture number="5" name="delimiter.balanced.end"/>
 				</ends-with>
 			</zone>
 			
