@@ -13,4 +13,13 @@
 		</detectors>
 	</language>
 	
+	<meta>
+		<name>Markdown</name>
+		<description>Syntax highlighting for John Gruber's Markdown</description>
+		<author>David Czihak, Ian Beck</author>
+		<identifier>at.davidczihak.Sugar.Markdown</identifier>
+		<version status="preview">0.9.4</version>
+		<download format="git">git://github.com/dc/markdown.sugar.git</download>
+	</meta>
+	
 </settings>

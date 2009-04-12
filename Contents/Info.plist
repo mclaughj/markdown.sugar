@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Markdown</string>
 	<key>CFBundleIdentifier</key>
-	<string>at.davidczihak.markdown</string>
+	<string>at.davidczihak.Sugar.Markdown</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
