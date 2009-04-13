@@ -24,6 +24,12 @@
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/ianbeck/Library/Application%20Support/Espresso/Sugars/Markdown.sugar/PlaceholderThemes/Markdown.css</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
 		</array>
 	</dict>
 </dict>

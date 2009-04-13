@@ -195,25 +195,25 @@
 		<collection name="markdown.links">
 			
 			<!-- AUTO LINK / E-MAIL -->
-			<zone name="relationship.link.external">
+			<zone name="structural.connector.link.external">
 				<expression>(&lt;)(https?://.*?)(>)</expression>
 				<capture number="1" name="delimiter.balanced.begin.bracket"/>
 				<capture number="2" name="literal.string.url"/>
 				<capture number="3" name="delimiter.balanced.end.bracket"/>
 			</zone>
-			<zone name="relationship.link.internal">
+			<zone name="structural.connector.link.internal">
 				<expression>(&lt;)(/|[a-zA-Z0-9_-].*?)(>)</expression>
 				<capture number="1" name="delimiter.balanced.begin.bracket"/>
 				<capture number="2" name="literal.string.url"/>
 				<capture number="3" name="delimiter.balanced.end.bracket"/>
 			</zone>
-			<zone name="relationship.link.contact">
+			<zone name="structural.connector.link.contact">
 				<expression>(&lt;)([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})(>)</expression>
 				<capture number="1" name="delimiter.balanced.begin.bracket"/>
 				<capture number="2" name="literal.string.email"/>
 				<capture number="3" name="delimiter.balanced.end.bracket"/>
 			</zone>
-			<zone name="relationship.link.unknown">
+			<zone name="structural.connector.link.unknown">
 				<expression>(&lt;)(.*?)(>)</expression>
 				<capture number="1" name="delimiter.balanced.begin.bracket"/>
 				<capture number="2" name="literal.string.url"/>
@@ -221,7 +221,7 @@
 			</zone>
 			
 			<!-- NORMAL LINK -->
-			<zone name="relationship.link.inline">
+			<zone name="structural.connector.link.inline">
 				<expression>(\[).+?(\]) ?(\()([^\s]+?)(\s+(['"])(.+?)(\6))?(\))</expression>
 				<capture number="1" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="2" name="delimiter.balanced.end.square-brace"/>
@@ -234,7 +234,7 @@
 			</zone>
 			
 			<!-- REFERENCE LINKS -->
-			<zone name="relationship.link.reference">
+			<zone name="structural.connector.link.reference">
 				<expression>(\[).+?(\]) ?(\[)(.+?)(\])</expression>
 				<capture number="1" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="2" name="delimiter.balanced.end.square-brace"/>
@@ -243,7 +243,7 @@
 				<capture number="5" name="delimiter.balanced.end.square-brace"/>
 			</zone>
 			
-			<zone name="relationship.link.reference">
+			<zone name="structural.connector.link.reference">
 				<expression>(\[)(.+?)(\]) ?(\[)(\])</expression>
 				<capture number="1" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="2" name="keyword.internal.reference"/>
@@ -253,7 +253,7 @@
 			</zone>
 					
 			<!-- NORMAL IMAGE -->
-			<zone name="relationship.image.inline">
+			<zone name="structural.connector.image.inline">
 				<expression>(!)(\[)(.+?)(\])(\()(.+?)(\s+(['"])(.+?)(\8))?(\))</expression>
 				<capture number="1" name="metadata.operator"/>
 				<capture number="2" name="delimiter.balanced.begin.square-brace"/>
@@ -268,11 +268,10 @@
 			</zone>
 			
 			<!-- REFERENCE IMAGE -->
-			<zone name="relationship.image.reference">
+			<zone name="structural.connector.image.reference">
 				<expression>(!)(\[)(.+?)(\])(\[)(.+?)(\])</expression>
 				<capture number="1" name="metadata.structural"/>
 				<capture number="2" name="delimiter.balanced.begin.square-brace"/>
-				<capture number="3" name="literal.string.url"/>
 				<capture number="4" name="delimiter.balanced.end.square-brace"/>
 				<capture number="5" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="6" name="keyword.internal.reference"/>
@@ -286,7 +285,7 @@
 					<capture number="1" name="delimiter.balanced.begin.square-brace"/>
 					<capture number="2" name="keyword.internal.reference"/>
 					<capture number="3" name="delimiter.balanced.end.square-brace"/>
-					<capture number="4" name="delimiter.separator"/>
+					<capture number="4" name="delimiter.declarative"/>
 					<capture number="5" name="delimiter.balanced.begin.bracket"/>
 					<capture number="6" name="literal.string.url"/>
 					<capture number="7" name="delimiter.balanced.end.bracket"/>

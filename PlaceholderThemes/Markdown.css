@@ -1,71 +1,57 @@
 /*
-	@placeholder text.markdown
+	@placeholder markdown
 */
 
-ruler.markdown {
+markdown separator {
 	background-color: #474747;
 	color: #ffffff;
 	spell-check: disabled;
 }
 
-url.markdown {
+markdown url {
 	color: #2F6F9F;
 	spell-check: disabled;
 }
 
-reference {
+markdown keyword.reference {
 	color: #4e279a;
 	background-color: #f3f2ff;
 	spell-check: disabled;
 }
 
-keyword {
+markdown structural.connector.link {
 	color: #74748c;
 	background-color: rgba(116,116,140,0.05);
 	spell-check: disabled;
 }
 
-keyword.image {
+markdown image metadata.operator {
 	color: #881b1b;
 	background-color: #fff;
 }
 
-keyword.less_important.markdown {
+markdown metadata.structural {
 	color: #444;
 	background-color: #fff;
 }
 
-entity {
-	color: #2F6F9F;
-	background-color: rgb(244, 250, 255);
-}
-
-text.entity {
-	color: #74748c;
-	background-color: #fff;
-}
-
-text.bold {
+markdown stylistic.weight {
 	color: #555;
 	font-weight: bold;
 }
 
-text.italic {
+markdown stylistic.slant {
 	color: #555;
 	font-weight: normal;
 	font-style: italic;
 }
 
-text.justbold {
-	font-weight: bold;
-}
-
-text.list.markdown {
+markdown structural.list.element {
 	color: #8f8272;
 	/*background-color: rgba(185,165,149,0.1);*/
 }
 
-text.blockquote {
+markdown blockquote {
 	background-color: #f6f6f6;
 }
 
@@ -75,13 +61,13 @@ text.code.markdown {
 	background-color: #f6f6f6;
 }
 
-header.hashed.markdown {
+markdown structural.header {
 	color: #634735;
 	font-weight: bold;
 	background-color: rgba(185,165,149,0.1);
 }
 
-punctuation.header.delimeter.hashed {
+markdown delimiter.hash {
 	font-weight: normal;
 	color: #888;
 	background-color: #fff;
