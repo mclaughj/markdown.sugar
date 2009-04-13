@@ -1,0 +1,8 @@
+Cleanup:
+- Rewrite code/pre selector names and clean up the targetting
+- Figure out how to target elements inside of blockquotes
+- Work on elements nested in lists
+- Fix the list element-turning-into-code problem
+- Evaluate new names to make sure they conform to the spec
+- Rewrite placeholder theme to be as generic as possible
+- Embed HTML syntax and make sure it doesn't affect autolinks
