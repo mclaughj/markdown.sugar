@@ -85,6 +85,9 @@ id sem consectetuer libero luctus adipiscing.
 > 1.   This is the first list item.
 > 2.   This is the second list item.
 > 
+> + This is a list item
+> + This is another list item
+> 
 > Here's some example code:
 > 
 >     return shell_exec("echo $input | $markdown_script");
@@ -135,7 +138,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 1.  This is a list item with two paragraphs. Lorem ipsum dolor
     sit amet, consectetuer adipiscing elit. Aliquam hendrerit
     mi posuere lectus.
-
+    
     Vestibulum enim wisi, viverra nec, fringilla in, laoreet
     vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
     sit amet velit.
@@ -144,7 +147,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 
 *   This is a list item with two paragraphs.
-
+    
     This is the second paragraph in the list item. You're
 only required to indent the first line. Lorem ipsum dolor
 sit amet, consectetuer adipiscing elit.
@@ -152,13 +155,13 @@ sit amet, consectetuer adipiscing elit.
 *   Another item in the same list.
 
 *   A list item with a blockquote:
-
+    
     > This is a blockquote
     > inside a list item.
 
 
 *   A list item with a code block:
-
+    
         <code goes here>
 
 
@@ -221,7 +224,7 @@ That is:
 
 
 Visit [Daring Fireball][] for more information.
-	
+
 [Daring Fireball]: http://daringfireball.net/
 
 
@@ -236,7 +239,7 @@ __double underscores__
 un*frigging*believable
 
 But if you surround an `*` or `_` with spaces, it'll be treated as a
-literal asterisk or underscore.
+literal asterisk or underscore: * _.
 
 Use the `printf()` function.
 

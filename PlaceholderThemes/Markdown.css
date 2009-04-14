@@ -19,33 +19,33 @@ markdown keyword.reference {
 	spell-check: disabled;
 }
 
-markdown structural.connector.link {
+markdown link {
 	color: #74748c;
 	background-color: rgba(116,116,140,0.05);
 	spell-check: disabled;
 }
 
-markdown image metadata.operator {
-	color: #881b1b;
-	background-color: #fff;
-}
-
-markdown metadata.structural {
+markdown delimiter.declarative {
 	color: #444;
 	background-color: #fff;
 }
 
-markdown stylistic.weight {
+markdown image delimiter.declarative {
+	color: #881b1b;
+	background-color: #fff;
+}
+
+markdown weight {
 	color: #555;
 	font-weight: bold;
 }
 
-markdown stylistic.slant {
+markdown slant {
 	color: #555;
 	font-style: italic;
 }
 
-markdown structural.list.element {
+markdown list.element {
 	color: #8f8272;
 	/*background-color: rgba(185,165,149,0.1);*/
 }
@@ -59,7 +59,7 @@ markdown code {
 	background-color: #f6f6f6;
 }
 
-markdown structural.header {
+markdown header {
 	color: #634735;
 	font-weight: bold;
 	background-color: rgba(185,165,149,0.1);

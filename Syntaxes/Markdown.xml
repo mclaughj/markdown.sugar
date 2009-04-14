@@ -2,11 +2,7 @@
 <syntax name="text.markdown">
 	<zones>
 		<include collection="markdown.code"/>
-		
-		<zone name="literal.escape.markdown">
-			<expression>\\(\\|`|\*|_|\{|}|\[|]|\(|\)|#|\+|-|\.|!)</expression>
-		</zone>
-		
+		<include collection="markdown.escapes"/>
 		<include collection="markdown.headers"/>
 		
 		<!-- HORIZONTAL RULE -->
@@ -19,40 +15,55 @@
 			</ends-with>
 		</zone>
 		
-		<!-- !BLOCKQUOTE -->
-		<zone name="structural.container.blockquote">
-			<starts-with>
-				<expression>(?=^\s*>)</expression>
-			</starts-with>
-			<ends-with>
-				<expression>(?=^$)</expression>
-			</ends-with>
-			<subzones>
-				<zone>
-					<expression>^\s*(>)</expression>
-					<capture number="1" name="metadata.structural"/>
-				</zone>
-				<include syntax="self"/>
-			</subzones>
-		</zone>
-		
+		<include collection="markdown.quotes"/>
 		<include collection="markdown.stylistic"/>
 		<include collection="markdown.lists"/>
 		<include collection="markdown.links"/>
+		<include collection="markdown.ref"/>
 	</zones>
 	
 	<library>
+		<!-- CODE COLLECTIONS -->
 		<collection name="markdown.code">
 			<!-- CODE BLOCK -->
 			<zone name="structural.container.code.block">
 				<starts-with>
-					<expression>^\t+|( {4})+</expression>
+					<expression>^(\t+|( {4})+)</expression>
 				</starts-with>
 				<ends-with>
 					<expression>^$</expression>
 				</ends-with>
 			</zone>
-			
+			<include collection="markdown.code.inline"/>
+		</collection>
+		
+		<collection name="markdown.code.nested">
+			<!-- CODE BLOCK -->
+			<zone name="structural.container.code.block">
+				<starts-with>
+					<expression>^(\t{2,}|( {4}){2,})</expression>
+				</starts-with>
+				<ends-with>
+					<expression>^$</expression>
+				</ends-with>
+			</zone>
+			<include collection="markdown.code.inline"/>
+		</collection>
+		
+		<collection name="markdown.code.quoted">
+			<!-- CODE BLOCK -->
+			<zone name="structural.container.code.block">
+				<starts-with>
+					<expression>\t+|( {4})+[^\s]</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^(>\s*)*$)</expression>
+				</ends-with>
+			</zone>
+			<include collection="markdown.code.inline"/>
+		</collection>
+		
+		<collection name="markdown.code.inline">
 			<!-- INLINE CODE -->
 			<zone name="structural.container.code.inline">
 				<starts-with>
@@ -65,6 +76,56 @@
 				</ends-with>
 			</zone>
 		</collection>
+		
+		<!-- BLOCKQUOTES -->
+		
+		<collection name="markdown.quotes">
+			<zone name="structural.container.blockquote">
+				<starts-with>
+					<expression>(?=^> ?)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^$)</expression>
+				</ends-with>
+				<subzones>
+					<include collection="markdown.quotes.delimiter"/>
+					<include collection="markdown.quotes.children"/>
+				</subzones>
+			</zone>
+		</collection>
+		
+		<collection name="markdown.quotes.nested">
+			<zone name="structural.container.blockquote">
+				<starts-with>
+					<expression>^(\t| {4})(?=>\s*)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^\s*$)</expression>
+				</ends-with>
+				<subzones>
+					<include collection="markdown.quotes.delimiter"/>
+					<include collection="markdown.quotes.children"/>
+				</subzones>
+			</zone>
+		</collection>
+		
+		<collection name="markdown.quotes.delimiter">
+			<zone>
+				<expression>^((> ?)*>) ?</expression>
+				<capture number="1" name="delimiter.structural.declarative"/>
+			</zone>
+		</collection>
+		
+		<collection name="markdown.quotes.children">
+			<include collection="markdown.escapes"/>
+			<include collection="markdown.code.quoted"/>
+			<include collection="markdown.lists.nested"/>
+			<include collection="markdown.stylistic"/>
+			<include collection="markdown.headers"/>
+			<include colleciotn="markdown.links"/>
+		</collection>
+		
+		<!-- HEADER COLLECTIONS -->
 		
 		<collection name="markdown.headers">
 			<!-- ATX HEADERs -->
@@ -109,6 +170,121 @@
 			
 		</collection>
 		
+		<!-- LIST COLLECTIONS -->
+		
+		<collection name="markdown.lists">
+			<!-- UNORDERED LIST -->
+			<zone name="structural.list.unordered">
+				<starts-with>
+					<expression>(?=^\s*[-+\*]\s+.)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^$)</expression>
+				</ends-with>
+				<subzones>
+					<zone name="structural.list.element">
+						<starts-with>
+							<expression>^\s*([-+\*])\s+</expression>
+							<capture number="1" name="delimiter.structural.declarative"/>
+						</starts-with>
+						<ends-with>
+							<expression>(?=^\s*[-+\*]\s)|(?=^$)</expression>
+						</ends-with>
+						<subzones>
+							<include collection="markdown.list.children"/>
+						</subzones>
+					</zone>
+				</subzones>
+			</zone>
+			
+			<!-- ORDERED LIST -->
+			<zone name="structural.list.ordered">
+				<starts-with>
+					<expression>(?=^\s*[0-9]+\.\s+.)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^$)</expression>
+				</ends-with>
+				<subzones>
+					<zone name="structural.list.element">
+						<starts-with>
+							<expression>^\s*([0-9]+\.)\s+</expression>
+							<capture number="1" name="delimiter.structural.declarative"/>
+						</starts-with>
+						<ends-with>
+							<expression>(?=^\s*[0-9]+\.\s)|(?=^$)</expression>
+						</ends-with>
+						<subzones>
+							<include collection="markdown.list.children"/>
+						</subzones>
+					</zone>
+				</subzones>
+			</zone>
+		</collection>
+		
+		<collection name="markdown.lists.nested">
+			<!-- UNORDERED LIST -->
+			<zone name="structural.list.unordered">
+				<starts-with>
+					<expression>(?=\s*[-+\*]\s+.)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^(>\s*)*$)</expression>
+				</ends-with>
+				<subzones>
+					<zone name="structural.list.element">
+						<starts-with>
+							<expression>\s*([-+\*])\s+</expression>
+							<capture number="1" name="delimiter.structural.declarative"/>
+						</starts-with>
+						<ends-with>
+							<expression>(?=\s*[-+\*]\s)|(?=^(>\s*)*$)</expression>
+						</ends-with>
+						<subzones>
+							<include collection="markdown.quotes.delimiter"/>
+							<include collection="markdown.list.children"/>
+						</subzones>
+					</zone>
+				</subzones>
+			</zone>
+			
+			<!-- ORDERED LIST -->
+			<zone name="structural.list.ordered">
+				<starts-with>
+					<expression>(?=\s*[0-9]+\.\s+.)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=^(>\s*)*$)</expression>
+				</ends-with>
+				<subzones>
+					<zone name="structural.list.element">
+						<starts-with>
+							<expression>\s*([0-9]+\.)\s+</expression>
+							<capture number="1" name="delimiter.structural.declarative"/>
+						</starts-with>
+						<ends-with>
+							<expression>(?=\s*[0-9]+\.\s)|(?=^(>\s*)*$)</expression>
+						</ends-with>
+						<subzones>
+							<include collection="markdown.quotes.delimiter"/>
+							<include collection="markdown.list.children"/>
+						</subzones>
+					</zone>
+				</subzones>
+			</zone>
+		</collection>
+		
+		<collection name="markdown.list.children">
+			<include collection="markdown.escapes"/>
+			<include collection="markdown.quotes.nested"/>
+			<include collection="markdown.code.nested"/>
+			<include collection="markdown.stylistic"/>
+			<include collection="markdown.headers"/>
+			<include colleciotn="markdown.links"/>
+		</collection>
+		
+		<!-- INLINE COLLECTIONS -->
+		
 		<collection name="markdown.stylistic">
 			<include collection="markdown.bold"/>
 			<include collection="markdown.slant"/>
@@ -148,58 +324,7 @@
 			</zone>
 		</collection>
 		
-		<collection name="markdown.lists">
-			<!-- UNORDERED LIST -->
-			<zone name="structural.list.unordered">
-				<starts-with>
-					<expression>(?=^\s*[-+\*]\s+.)</expression>
-				</starts-with>
-				<ends-with>
-					<expression>(?=^$)</expression>
-				</ends-with>
-				<subzones>
-					<zone name="structural.list.element">
-						<starts-with>
-							<expression>^\s*([-+\*])\s+</expression>
-							<capture number="1" name="metadata.structural"/>
-						</starts-with>
-						<ends-with>
-							<expression>(?=^\s*[-+\*]\s)|(?=^$)</expression>
-						</ends-with>
-						<subzones>
-							<include syntax="self"/>
-						</subzones>
-					</zone>
-				</subzones>
-			</zone>
-			
-			<!-- ORDERED LIST -->
-			<zone name="structural.list.ordered">
-				<starts-with>
-					<expression>(?=^\s*[0-9]+\.\s+.)</expression>
-				</starts-with>
-				<ends-with>
-					<expression>(?=^$)</expression>
-				</ends-with>
-				<subzones>
-					<zone name="structural.list.element">
-						<starts-with>
-							<expression>^\s*([0-9]+\.)\s+</expression>
-							<capture number="1" name="metadata.structural"/>
-						</starts-with>
-						<ends-with>
-							<expression>(?=^\s*[0-9]+\.\s)|(?=^$)</expression>
-						</ends-with>
-						<subzones>
-							<include syntax="self"/>
-						</subzones>
-					</zone>
-				</subzones>
-			</zone>
-		</collection>
-		
 		<collection name="markdown.links">
-			
 			<!-- AUTO LINK / E-MAIL -->
 			<zone name="structural.connector.link.external">
 				<expression>(&lt;)(https?://.*?)(>)</expression>
@@ -261,7 +386,7 @@
 			<!-- NORMAL IMAGE -->
 			<zone name="structural.connector.image.inline">
 				<expression>(!)(\[)(.+?)(\])(\()(.+?)(\s+(['"])(.+?)(\8))?(\))</expression>
-				<capture number="1" name="metadata.operator"/>
+				<capture number="1" name="delimiter.structural.declarative"/>
 				<capture number="2" name="delimiter.balanced.begin.square-brace"/>
 				
 				<capture number="4" name="delimiter.balanced.end.square-brace"/>
@@ -276,14 +401,16 @@
 			<!-- REFERENCE IMAGE -->
 			<zone name="structural.connector.image.reference">
 				<expression>(!)(\[)(.+?)(\])(\[)(.+?)(\])</expression>
-				<capture number="1" name="metadata.structural"/>
+				<capture number="1" name="delimiter.structural.declarative"/>
 				<capture number="2" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="4" name="delimiter.balanced.end.square-brace"/>
 				<capture number="5" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="6" name="keyword.internal.reference"/>
 				<capture number="7" name="delimiter.balanced.end.square-brace"/>
 			</zone>
-			
+		</collection>
+		
+		<collection name="markdown.ref">
 			<!-- REFERENCE DEFINITION -->
 			<zone name="metadata.internal.reference">
 				<starts-with>
@@ -303,6 +430,12 @@
 					<capture number="4" name="literal.string.title"/>
 					<capture number="5" name="delimiter.balanced.end"/>
 				</ends-with>
+			</zone>
+		</collection>
+		
+		<collection name="markdown.escapes">
+			<zone name="literal.escape.markdown">
+				<expression>\\(\\|`|\*|_|\{|}|\[|]|\(|\)|#|\+|-|\.|!)</expression>
 			</zone>
 		</collection>
 	</library>
