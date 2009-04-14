@@ -42,7 +42,6 @@ markdown stylistic.weight {
 
 markdown stylistic.slant {
 	color: #555;
-	font-weight: normal;
 	font-style: italic;
 }
 
@@ -55,8 +54,7 @@ markdown blockquote {
 	background-color: #f6f6f6;
 }
 
-text.pre,
-text.code.markdown {
+markdown code {
 	color: #888;
 	background-color: #f6f6f6;
 }

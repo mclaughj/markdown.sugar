@@ -43,39 +43,45 @@
 	
 	<library>
 		<collection name="markdown.code">
-			<!-- CODE BLOCK <pre> -->
-			<zone name="text.pre">
+			<!-- CODE BLOCK -->
+			<zone name="structural.container.code.block">
 				<starts-with>
-					<expression>^(\t{1}|\s{4})[^\[]</expression>
+					<expression>^\t+|( {4})+</expression>
 				</starts-with>
 				<ends-with>
 					<expression>^$</expression>
 				</ends-with>
 			</zone>
 			
-			<!-- CODE <code> -->
-			<zone>
-				<expression>(`[^`]*`)</expression>
-				<capture number="1" name="text.code.markdown"/>
+			<!-- INLINE CODE -->
+			<zone name="structural.container.code.inline">
+				<starts-with>
+					<expression>(`+)</expression>
+					<capture number="0" name="delimiter.balanced.backtick.begin"/>
+				</starts-with>
+				<ends-with>
+					<expression>\1</expression>
+					<capture number="0" name="delimiter.balanced.backtick.end"/>
+				</ends-with>
 			</zone>
 		</collection>
 		
 		<collection name="markdown.headers">
 			<!-- ATX HEADERs -->
 			<zone name="structural.header.atx.title">
-				<expression>^(#) .+?( (#+))?$</expression>
+				<expression>(#) .+?( (#+))?$</expression>
 				<capture number="1" name="delimiter.balanced.begin.hash"/>
 				<capture number="3" name="delimiter.balanced.end.hash"/>
 			</zone>
 			
 			<zone name="structural.header.atx.section">
-				<expression>^(#{2}) .+?( (#+))?$</expression>
+				<expression>(#{2}) .+?( (#+))?$</expression>
 				<capture number="1" name="delimiter.balanced.begin.hash"/>
 				<capture number="3" name="delimiter.balanced.end.hash"/>
 			</zone>
 			
 			<zone name="structural.header.atx.tertiary">
-				<expression>^(#{3,6}) .+?( (#+))?$</expression>
+				<expression>(#{3,6}) .+?( (#+))?$</expression>
 				<capture number="1" name="delimiter.balanced.begin.hash"/>
 				<capture number="3" name="delimiter.balanced.end.hash"/>
 			</zone>

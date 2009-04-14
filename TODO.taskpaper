@@ -1,5 +1,5 @@
 Cleanup:
-- Rewrite code/pre selector names and clean up the targetting
+- Rewrite code/pre selector names and clean up the targetting @done(2009-04-13)
 - Figure out how to target elements inside of blockquotes
 - Work on elements nested in lists
 - Fix the list element-turning-into-code problem
