@@ -1,9 +1,14 @@
+Todo:
+- Test across actual documents for errors and omissions
+- Test list/blockquote/other element nesting and improve logic if possible
+- Replace HTML detection with new HTML regex/names once Elliott finishes the HTML.sugar rewrite
+- Figure out what the heck to do with Setext-style headers
 Cleanup:
 - Rewrite code/pre selector names and clean up the targetting @done(2009-04-13)
 - Figure out how to target elements inside of blockquotes @done(2009-04-14)
 - Work on elements nested in lists @done(2009-04-14)
 - Fix the list element-turning-into-code problem @done(2009-04-14)
-- Evaluate new names to make sure they conform to the spec
+- Evaluate new names to make sure they conform to the spec @done(2009-04-14)
 - Rewrite placeholder theme to be as generic as possible @done(2009-04-14)
-- Embed HTML syntax and make sure it doesn't affect autolinks
+- Embed HTML syntax and make sure it doesn't affect autolinks @done(2009-04-14)
 - Fix the problem where a multiline blockquote in a list is being evaluated as a code block @done(2009-04-14)
