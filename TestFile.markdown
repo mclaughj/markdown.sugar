@@ -289,3 +289,13 @@ That is:
 \-	minus sign (hyphen)
 \.   dot
 \!   exclamation mark
+
+<div>
+	<p>This is a paragraph</p>
+</div>
+
+*italic text*
+
+<p>This is a regular paragraph on a single line.</p>
+
+**bold text?**
