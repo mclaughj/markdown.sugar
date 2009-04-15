@@ -2,7 +2,7 @@
 	@placeholder markdown
 */
 
-markdown separator {
+markdown structural.separator {
 	background-color: #474747;
 	color: #ffffff;
 	spell-check: disabled;

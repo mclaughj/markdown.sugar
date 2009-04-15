@@ -104,7 +104,12 @@
 				</ends-with>
 				<subzones>
 					<include collection="markdown.quotes.delimiter"/>
-					<include collection="markdown.quotes.children"/>
+					<include collection="markdown.escapes"/>
+					<include collection="markdown.code.nested"/>
+					<include collection="markdown.lists.nested"/>
+					<include collection="markdown.stylistic"/>
+					<include collection="markdown.headers"/>
+					<include colleciotn="markdown.links"/>
 				</subzones>
 			</zone>
 		</collection>
@@ -418,7 +423,7 @@
 					<capture number="1" name="delimiter.balanced.begin.square-brace"/>
 					<capture number="2" name="keyword.internal.reference"/>
 					<capture number="3" name="delimiter.balanced.end.square-brace"/>
-					<capture number="4" name="delimiter.declarative"/>
+					<capture number="4" name="delimiter.separator.pairing"/>
 					<capture number="5" name="delimiter.balanced.begin.bracket"/>
 					<capture number="6" name="literal.string.url"/>
 					<capture number="7" name="delimiter.balanced.end.bracket"/>

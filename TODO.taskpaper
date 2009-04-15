@@ -6,4 +6,4 @@ Cleanup:
 - Evaluate new names to make sure they conform to the spec
 - Rewrite placeholder theme to be as generic as possible @done(2009-04-14)
 - Embed HTML syntax and make sure it doesn't affect autolinks
-- Fix the problem where a multiline blockquote in a list is being evaluated as a code block
+- Fix the problem where a multiline blockquote in a list is being evaluated as a code block @done(2009-04-14)
