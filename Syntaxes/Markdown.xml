@@ -130,7 +130,7 @@
 			<!-- For use in lists -->
 			<zone name="structural.container.blockquote">
 				<starts-with>
-					<expression>^(\t| {4})(?=>\s*)</expression>
+					<expression>^(\t| {4})(?=> ?)</expression>
 				</starts-with>
 				<ends-with>
 					<expression>(?=^\s*$)</expression>
@@ -149,7 +149,7 @@
 		
 		<collection name="markdown.quotes.delimiter">
 			<zone>
-				<expression>^((> ?)*>) ?</expression>
+				<expression>((> ?)*>) ?</expression>
 				<capture number="1" name="delimiter.structural.declarative"/>
 			</zone>
 		</collection>
@@ -188,7 +188,7 @@
 			<zone name="structural.header.setext.title">
 				<starts-with>
 					<expression>^(={4,})</expression>
-					<capture number="1" name="medatadata.structural.header"/>
+					<capture number="1" name="metadata.structural.header"/>
 				</starts-with>
 				<ends-with>
 					<expression>$\n</expression>
@@ -198,7 +198,7 @@
 			<zone name="structural.header.setext.section">
 				<starts-with>
 					<expression>^(-{4,})</expression>
-					<capture number="1" name="medatadata.structural.header"/>
+					<capture number="1" name="metadata.structural.header"/>
 				</starts-with>
 				<ends-with>
 					<expression>$\n</expression>
@@ -410,7 +410,7 @@
 			<zone name="structural.connector.link.reference">
 				<expression>(\[)(.+?)(\]) ?(\[)(\])</expression>
 				<capture number="1" name="delimiter.balanced.begin.square-brace"/>
-				<capture number="2" name="keyword.internal.reference"/>
+				<!--<capture number="2" name="keyword.internal.reference"/>-->
 				<capture number="3" name="delimiter.balanced.end.square-brace"/>
 				<capture number="4" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="5" name="delimiter.balanced.end.square-brace"/>

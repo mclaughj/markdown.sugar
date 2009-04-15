@@ -30,18 +30,6 @@
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/ianbeck/Library/Application%20Support/Espresso/Sugars/Markdown.sugar/README.markdown</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/ianbeck/Library/Application%20Support/Espresso/Sugars/Markdown.sugar/Contents/Info.plist</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
 		</array>
 	</dict>
 </dict>
