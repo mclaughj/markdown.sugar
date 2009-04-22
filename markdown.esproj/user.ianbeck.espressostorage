@@ -14,12 +14,6 @@
 		<array>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/ianbeck/Library/Application%20Support/Espresso/Sugars/Markdown.sugar/TestFile.markdown</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
 				<string>file://localhost/Users/ianbeck/Library/Application%20Support/Espresso/Sugars/Markdown.sugar/Syntaxes/Markdown.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
