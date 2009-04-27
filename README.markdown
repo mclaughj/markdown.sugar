@@ -4,6 +4,8 @@
 
 _by David Czihak_
 
+_thanks to Ian Beck_
+
 [www.davidczihak.at](http://www.davidczihak.at/)
 
 ## Release notes

@@ -14,25 +14,25 @@
 		<array>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/david/git/markdown.sugar/README.markdown</string>
+				<string>file://localhost/Users/david/Git/markdown.sugar/README.markdown</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/david/git/markdown.sugar/PlaceholderThemes/Markdown.css</string>
+				<string>file://localhost/Users/david/Git/markdown.sugar/Languages.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/david/git/markdown.sugar/Itemizers/Itemizers.xml</string>
+				<string>file://localhost/Users/david/Git/markdown.sugar/Syntaxes/Markdown.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/david/git/markdown.sugar/Syntaxes/Markdown.xml</string>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Actions.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>

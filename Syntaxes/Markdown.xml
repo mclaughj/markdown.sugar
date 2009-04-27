@@ -418,7 +418,7 @@
 					
 			<!-- NORMAL IMAGE -->
 			<zone name="structural.connector.image.inline">
-				<expression>(!)(\[)(.+?)(\])(\()(.+?)(\s+(['"])(.+?)(\8))?(\))</expression>
+				<expression>(!)(\[)(.*)(\])(\()(.+?)(\s+(['"])(.+?)(\8))?(\))</expression>
 				<capture number="1" name="delimiter.structural.declarative"/>
 				<capture number="2" name="delimiter.balanced.begin.square-brace"/>
 				
@@ -433,7 +433,7 @@
 			
 			<!-- REFERENCE IMAGE -->
 			<zone name="structural.connector.image.reference">
-				<expression>(!)(\[)(.+?)(\])(\[)(.+?)(\])</expression>
+				<expression>(!)(\[)(.*)(\])(\[)(.+?)(\])</expression>
 				<capture number="1" name="delimiter.structural.declarative"/>
 				<capture number="2" name="delimiter.balanced.begin.square-brace"/>
 				<capture number="4" name="delimiter.balanced.end.square-brace"/>
