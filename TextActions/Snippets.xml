@@ -22,6 +22,7 @@
 			<![CDATA[| ${1:table header} | $2 |
 | ${1/./-/g} | ${2/./-/g} |
 | ${3:${1/./ /g}} | ${4:${2/./ /g}} |]]></text>
+		<syntax-context>text.markdown, text.markdown *</syntax-context>
 		<text-trigger>table</text-trigger>
 	</snippet>
 	
