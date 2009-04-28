@@ -1,6 +1,6 @@
 # Markdown Sugar for Espresso
 
-> Version __0.3__
+> Version __0.3.1__
 
 _by David Czihak_
 
@@ -10,6 +10,9 @@ _thanks to Ian Beck_
 
 ## Release notes
 
+- Version 0.3.1
+	- Snippets added
+	- Fix: Images without alt attribute
 - Version 0.3
 	- Renamed selectors to conform better with [Espresso Sugar Standards][1]
 	- Much more comprehensive support for basic Markdown syntax
