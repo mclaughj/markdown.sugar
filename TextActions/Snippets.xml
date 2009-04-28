@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<action-recipes>
+	
+	<snippet id="com.davidczihak.TextActions.Markdown.Link" category="actions.Markdown/md.tools.Snippets">
+		<title>Link</title>
+		<text><![CDATA[[$1](${2:http://}$3)]]></text>
+		<syntax-context>text.markdown, text.markdown *</syntax-context>
+		<text-trigger>link</text-trigger>
+	</snippet>
+	
+	<snippet id="com.davidczihak.TextActions.Markdown.Image" category="actions.Markdown/md.tools.Snippets">
+		<title>Image</title>
+		<text><![CDATA[![${1:alt}](${2:http://$3})]]></text>
+		<syntax-context>text.markdown, text.markdown *</syntax-context>
+		<text-trigger>img</text-trigger>
+	</snippet>
+	
+	<snippet id="com.davidczihak.TextActions.Markdown.Table" category="actions.Markdown/md.tools.Snippets">
+		<title>Table</title>
+		<text>
+			<![CDATA[| ${1:table header} | $2 |
+| ${1/./-/g} | ${2/./-/g} |
+| ${3:${1/./ /g}} | ${4:${2/./ /g}} |]]></text>
+		<text-trigger>table</text-trigger>
+	</snippet>
+	
+</action-recipes>

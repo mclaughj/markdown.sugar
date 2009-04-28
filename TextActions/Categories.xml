@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<action-categories>
+	
+	<category id="actions.Markdown" show="sub">
+		<title>Markdown</title>
+	</category>
+	
+	<category id="md.tools" show="inline separated"></category>
+	<category id="md.tools.Snippets" show="inline separated"></category>
+	
+</action-categories>

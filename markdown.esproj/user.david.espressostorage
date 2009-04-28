@@ -32,6 +32,18 @@
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Snippets.xml</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Categories.xml</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
 				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Actions.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>

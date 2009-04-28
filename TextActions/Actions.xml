@@ -2,20 +2,15 @@
 
 <action-recipes>
 	
-	<snippet id="com.davidczihak.TextActions.Markdown.Link" category="tools.Snippets">
-		<title>Link</title>
-		<text><![CDATA[[$1](${2:http://}$3)]]></text>
-		<syntax-context>text.markdown</syntax-context>
-		<text-trigger>link</text-trigger>
-		<when-disabled>hide</when-disabled>
-	</snippet>
-	
-	<snippet id="com.davidczihak.TextActions.Markdown.Image" category="tools.Snippets">
-		<title>Image</title>
-		<text><![CDATA[![${1:alt}](${2:http://$3})]]></text>
-		<syntax-context>text.markdown</syntax-context>
-		<text-trigger>img</text-trigger>
-		<when-disabled>hide</when-disabled>
-	</snippet>
+	<!--
+	<action id="com.davidczihak.TextActions.Markdown.Convert" category="actions.Markdown/md.tools">
+		<class>MarkdownToHTML</class>
+		<title>Convert to HTML…</title>
+		<key-equivalent>cmd shift C</key-equivalent>
+		<setup>
+			<filename></filename>
+		</setup>
+	</action>
+	-->
 	
 </action-recipes>
