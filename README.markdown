@@ -1,6 +1,6 @@
 # Markdown Sugar for Espresso
 
-> Version __0.3.1__
+> Version __0.3.2__
 
 _by David Czihak_
 
