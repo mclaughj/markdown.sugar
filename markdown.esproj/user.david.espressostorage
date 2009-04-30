@@ -20,6 +20,12 @@
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TestFile.markdown</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
 				<string>file://localhost/Users/david/Git/markdown.sugar/Languages.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
@@ -32,19 +38,31 @@
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Snippets.xml</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
 				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Categories.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Snippets.xml</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TextTools/Tools.xml</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
 				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Actions.xml</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TEA/MarkdownConvert.php</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>

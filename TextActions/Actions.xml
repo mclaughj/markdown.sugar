@@ -2,15 +2,29 @@
 
 <action-recipes>
 	
-	<!--
 	<action id="com.davidczihak.TextActions.Markdown.Convert" category="actions.Markdown/md.tools">
-		<class>MarkdownToHTML</class>
+		<class>TEALoader</class>
 		<title>Convert to HTML…</title>
-		<key-equivalent>cmd shift C</key-equivalent>
 		<setup>
-			<filename></filename>
+			<script>MarkdownConvert.php</script>
+			
+			<output>text</output>
+			
+			<undo_name>convert to HTML</undo_name>
+			<syntax-context>markdown, markdown *</syntax-context>
 		</setup>
 	</action>
-	-->
+	
+	<action id="com.davidczihak.TextActions.Markdown.ShortenURL" category="actions.Markdown/md.tools">
+		<class>TEALoader</class>
+		<title>Shorten URL…</title>
+		<setup>
+			<script>ShortenURL.php</script>
+			
+			<output>text</output>
+			
+			<syntax-context>markdown, markdown *</syntax-context>
+		</setup>
+	</action>
 	
 </action-recipes>

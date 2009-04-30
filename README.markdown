@@ -10,9 +10,12 @@ _thanks to Ian Beck_
 
 ## Release notes
 
+- Version 0.3.2
+	- [new] Convert Markdown to HTML
+	- [new] Shorten URL
 - Version 0.3.1
-	- Snippets added
-	- Fix: Images without alt attribute
+	- [new] Snippets
+	- [fix] Images without alt attribute
 - Version 0.3
 	- Renamed selectors to conform better with [Espresso Sugar Standards][1]
 	- Much more comprehensive support for basic Markdown syntax
@@ -31,3 +34,4 @@ _thanks to Ian Beck_
 	- First-level Setext headers improperly trigger for some horizontal rules
 	- Recommend not using `---------` as a horizontal rule, for example; even sticking some spaces in between dashes will stop it from triggering as a header
 - HTML detection is very basic, and doesn't allow for Markdown in inline HTML blocks
+- Espresso crashes sometimes when trying to shorten the URL
