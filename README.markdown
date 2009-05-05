@@ -1,6 +1,6 @@
 # Markdown Sugar for Espresso
 
-> Version __0.3.2__
+> Version __0.3.3__
 
 _by David Czihak_
 
@@ -10,6 +10,9 @@ _thanks to Ian Beck_
 
 ## Release notes
 
+- Version 0.3.3
+	- [new] Check for updates
+	- [improved] Shorten URL now works faster and only shortens URLs and mail addresses
 - Version 0.3.2
 	- [new] Convert Markdown to HTML
 	- [new] Shorten URL

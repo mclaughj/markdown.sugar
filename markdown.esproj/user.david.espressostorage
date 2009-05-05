@@ -50,12 +50,6 @@
 			</dict>
 			<dict>
 				<key>DocumentURL</key>
-				<string>file://localhost/Users/david/Git/markdown.sugar/TextTools/Tools.xml</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
 				<string>file://localhost/Users/david/Git/markdown.sugar/TextActions/Actions.xml</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
@@ -63,6 +57,18 @@
 			<dict>
 				<key>DocumentURL</key>
 				<string>file://localhost/Users/david/Git/markdown.sugar/TEA/MarkdownConvert.php</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TEA/ShortenURL.php</string>
+				<key>StateType</key>
+				<string>DefaultTab</string>
+			</dict>
+			<dict>
+				<key>DocumentURL</key>
+				<string>file://localhost/Users/david/Git/markdown.sugar/TEA/Update.php</string>
 				<key>StateType</key>
 				<string>DefaultTab</string>
 			</dict>

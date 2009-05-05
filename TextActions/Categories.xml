@@ -7,5 +7,6 @@
 	
 	<category id="md.tools" show="inline separated"></category>
 	<category id="md.tools.Snippets" show="inline separated"></category>
+	<category id="md.version" show="inline separated"></category>
 	
 </action-categories>

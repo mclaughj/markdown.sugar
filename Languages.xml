@@ -18,7 +18,7 @@
 		<description>Syntax highlighting for John Gruber's Markdown</description>
 		<author>David Czihak, Ian Beck</author>
 		<identifier>at.davidczihak.Sugar.Markdown</identifier>
-		<version status="preview">0.3.1</version>
+		<version status="preview">0.3.3</version>
 		<download format="git">git://github.com/dc/markdown.sugar.git</download>
 	</meta>
 	
